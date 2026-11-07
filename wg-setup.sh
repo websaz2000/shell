@@ -54,6 +54,6 @@ sudo wg
 
 echo "=== 8. Applying iptables NAT rule ==="
 # Replace 'enp0s3' with your actual public network interface if different
-sudo iptables -t nat -A PREROUTING -i enp0s3 -p tcp --dport 62643 -j DNAT --to 203.0.130.45:62643
+sudo iptables -t nat -A PREROUTING -i enp0s3 -p tcp --dport 61000:61999 -j DNAT --to-destination 203.0.130.45:61000-61999
 
 echo "=== Setup Complete! ==="
