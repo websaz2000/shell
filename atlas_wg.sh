@@ -1,5 +1,7 @@
 #!/bin/bash
 
+#curl -sSL https://raw.githubusercontent.com/websaz2000/shell/main/atlas_wg.sh | sudo bash
+
 # Ensure script is run with root privileges
 if [ "$EUID" -ne 0 ]; then
   echo "[-] Please run this script with sudo or as root."
