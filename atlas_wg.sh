@@ -1,7 +1,6 @@
 #!/bin/bash
 
 #curl -sSL https://raw.githubusercontent.com/websaz2000/shell/main/atlas_wg.sh | sudo bash
-
 # Ensure script is run with root privileges
 if [ "$EUID" -ne 0 ]; then
   echo "[-] Please run this script with sudo or as root."
@@ -12,14 +11,14 @@ fi
 CONFIG_DIR="/var/bitso_repo/wireguard"
 CONFIG_FILE="$CONFIG_DIR/aeza_ip45.conf"
 
-# Verify directory exists; throw an error if it doesn't
+# Verify directory exists; throw an error and exit if it doesn't
 if [ ! -d "$CONFIG_DIR" ]; then
   echo "[-] Error: Directory $CONFIG_DIR does not exist."
   exit 1
 fi
 
-# Ask for the remote IP address/parameter
-read -p "Enter the remote IP address: " ip_param
+# Ask the user for the IP address
+read -p "Enter the IP address: " ip_param
 
 if [ -z "$ip_param" ]; then
   echo "[-] Error: IP input cannot be empty."
@@ -47,4 +46,5 @@ Endpoint = ${ip_param}:51820
 PersistentKeepalive = 25
 EOF
 
+echo "[+] WireGuard configuration successfully written to: $CONFIG_FILE"
 echo "[+] WireGuard configuration successfully written to: $CONFIG_FILE"
