@@ -47,4 +47,20 @@ PersistentKeepalive = 25
 EOF
 
 echo "[+] WireGuard configuration successfully written to: $CONFIG_FILE"
-echo "[+] WireGuard configuration successfully written to: $CONFIG_FILE"
+
+
+# Execute commands inside the Docker container to restart the WireGuard interface
+CONTAINER_NAME="bitso_qbit_641"
+
+echo "[*] Connecting to container '$CONTAINER_NAME' to restart WireGuard..."
+docker exec -i "$CONTAINER_NAME" bash -c "cd /var/wireguard && wg-quick down aeza_ip45 2>/dev/null || true; wg-quick up aeza_ip45"
+
+if [ $? -eq 0 ]; then
+  echo "[+] WireGuard interface 'aeza_ip45' successfully brought up inside $CONTAINER_NAME."
+else
+  echo "[-] Error: Failed to bring up WireGuard interface inside the container."
+  exit 1
+fi
+
+
+
