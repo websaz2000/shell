@@ -3,6 +3,8 @@
 # Exit immediately if a command exits with a non-zero status
 set -e
 
+# curl -sSL https://raw.githubusercontent.com/websaz2000/shell/main/wg-setup.sh | sudo bash
+
 echo "=== 1. Updating package lists ==="
 sudo apt update
 
