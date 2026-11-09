@@ -53,7 +53,7 @@ echo "[+] WireGuard configuration successfully written to: $CONFIG_FILE"
 CONTAINER_NAME="bitso_qbit_641"
 
 echo "[*] Connecting to container '$CONTAINER_NAME' to restart WireGuard..."
-docker exec -i "$CONTAINER_NAME" bash -c "cd /var/wireguard && wg-quick down aeza_ip45 2>/dev/null || true; wg-quick up aeza_ip45"
+docker exec -i "$CONTAINER_NAME" bash -c "cd /etc/wireguard && wg-quick down aeza_ip45 2>/dev/null || true; wg-quick up aeza_ip45"
 
 if [ $? -eq 0 ]; then
   echo "[+] WireGuard interface 'aeza_ip45' successfully brought up inside $CONTAINER_NAME."
